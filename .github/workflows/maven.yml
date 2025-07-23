@@ -29,6 +29,6 @@ jobs:
         image: darshanbk812/github-action-testing
         tags: v1, latest
         registry: docker.io  # ✅ Docker Hub (default)
-        dockerfile: Dockerfile.ci
+        dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
