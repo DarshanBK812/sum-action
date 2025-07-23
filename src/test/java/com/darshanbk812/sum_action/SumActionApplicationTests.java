@@ -1,13 +1,22 @@
 package com.darshanbk812.sum_action;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
 class SumActionApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	@InjectMocks
+	private SumController controller;
 
+	@ParameterizedTest
+	@CsvSource({ "1 ,2, 3", "3 , 5, 8" })
+	void contextLoads(int n1, int n2, int output) {
+		assertEquals("Sum is :" + output, controller.sum(n1, n2));
+	}
 }
