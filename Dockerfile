@@ -1,6 +1,6 @@
 FROM openjdk:17
 
-EXPOSE 8081
+EXPOSE 8082
 
 COPY target/github-action-testing.jar app.jar
 
