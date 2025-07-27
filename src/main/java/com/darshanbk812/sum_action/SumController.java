@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SumController {
 
-	@GetMapping("/diff/{n1}/{n2}")
+	@GetMapping("/sum/{n1}/{n2}")
 	public String diff(@PathVariable int n1, @PathVariable int n2) {
-		return "Sum is :"+(n1 - n2);
+		return "Sum is :"+(n1 + n2);
 	}
 
 }
