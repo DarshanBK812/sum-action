@@ -15,8 +15,8 @@ class SumActionApplicationTests {
 	private SumController controller;
 
 	@ParameterizedTest
-	@CsvSource({ "1 ,2, -1", "5 , 2, 3" })
+	@CsvSource({ "1 ,2, 3", "5 , 2, 7" })
 	void contextLoads(int n1, int n2, int output) {
-		assertEquals("Sum is :" + output, controller.diff(n1, n2));
+		assertEquals("Sum is :" + output, controller.sum(n1, n2));
 	}
 }
