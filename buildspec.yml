@@ -5,7 +5,7 @@ phases:
     runtime-versions:
       java: corretto17
     commands:
-      - echo "Installing Java 17 runtime and Maven…"
+      - echo "Installing Java 17 runtime and Maven…"
 
   pre_build:
     commands:
@@ -14,27 +14,25 @@ phases:
       - echo "Logging in to Amazon ECR…"
       - aws --version
       - REPOSITORY_URI=998718206177.dkr.ecr.ap-south-1.amazonaws.com/darshanbk812
-      - aws ecr get-login-password --region ap-south-1 \
-          | docker login --username AWS --password-stdin $REPOSITORY_URI
-      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
 
   build:
     commands:
       - echo "Build started on $(date)"
       - echo "Building Docker image…"
-      - docker build -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
     commands:
       - echo "Build completed on $(date)"
       - echo "Pushing Docker images…"
-      - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo "Generating imagedefinitions.json for ECS…"
-      - printf '[{"name":"darshanbk812","imageUri":"%s"}]' \
-          $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"darshanbk812","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - echo "imagedefinitions.json contents:"
       - cat imagedefinitions.json
 
