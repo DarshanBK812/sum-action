@@ -12,9 +12,9 @@ public class SumController {
 		return "Sum is :" + (n1 + n2);
 	}
 
-	@GetMapping("/diff/{n1}/{n2}")
-	public String diff(@PathVariable int n1, @PathVariable int n2) {
-		return "Diff is : (n1-n2)";
-	}
+//	@GetMapping("/diff/{n1}/{n2}")
+//	public String diff(@PathVariable int n1, @PathVariable int n2) {
+//		return "Diff is : (n1-n2)";
+//	}
 
 }
