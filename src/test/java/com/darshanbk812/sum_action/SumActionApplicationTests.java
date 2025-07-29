@@ -19,4 +19,8 @@ class SumActionApplicationTests {
 	void contextLoads(int n1, int n2, int output) {
 		assertEquals("Sum is :" + output, controller.sum(n1, n2));
 	}
+	
+	void diff() {
+		assertEquals("Diff is :"+1 , controller.diff(3 , 2));
+	}
 }
