@@ -1,5 +1,5 @@
-# 1. Use a slim, production-ready JRE base
-FROM eclipse-temurin:17-jre-focal-slim
+# 1. Use Amazon Corretto 17 (Debian-based, production-ready JRE)
+FROM amazoncorretto:17
 
 # 2. Label for metadata
 LABEL maintainer="darshanbk812@example.com"
