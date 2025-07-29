@@ -4,11 +4,11 @@ FROM amazoncorretto:17
 # 2. Label for metadata
 LABEL maintainer="darshanbk812@example.com"
 
-# 3. Create & switch to app directory
+# 3. Create & switch to the app directory
 WORKDIR /app
 
-# 4. Copy the built JAR into the container
-COPY target/github-action-testing.jar app.jar
+# 4. Copy the built JAR into the container (matches any JAR in target/)
+COPY target/*.jar app.jar
 
 # 5. Expose the application port
 EXPOSE 8082
